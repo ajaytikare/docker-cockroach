@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t ajaytikare/docker-cockroach -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true ajaytikare/docker-cockroach npm run test
